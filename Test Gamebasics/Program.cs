@@ -10,12 +10,30 @@ namespace Test_Gamebasics
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
-
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+         
+            Team Feyenoord = new Team("Feyenoord", 2);
+            Team Ajax = new Team("Ajax", 3);
+            Team PSV = new Team("PSV", 2);
+            Team AZ = new Team("AZ", 1);
+            List<Team> List= new List<Team>()
+            {
+               Feyenoord,
+               Ajax,
+               PSV,
+               AZ
+            };
+            Poule poule = new Poule(Feyenoord, Ajax, PSV, AZ);
+            poule.RoundOne();
+            poule.RoundTwo();
+            poule.RoundThree();
+            List<Team> RankedList = poule.CalculateRankings(List);
+            int i = 1;
+            Console.WriteLine("Rankings");
+            foreach (Team team in RankedList)
+            {
+                Console.WriteLine(i + " " + team.Name);
+                i++;
+            }
         }
     }
 }
